@@ -14,24 +14,27 @@
 <link rel="apple-touch-icon" href="apple-touch-icon.png">
 
 <!-- Превью ссылки в мессенджерах.
-     ВАЖНО: пока адреса относительные, и часть мессенджеров покажет ссылку
-     без картинки. Как только появится адрес — хоть домен, хоть страница
-     GitHub Pages вида https://имя.github.io/репозиторий/ — впишите его
-     в og:url и og:image ниже полностью, вместе с https://. -->
+     Адреса абсолютные — так их понимают все мессенджеры.
+     Появится свой домен — поменяйте три строки ниже (og:url, og:image,
+     twitter:image) на него, относительные пути сюда не годятся.
+     Мессенджеры кешируют превью намертво: после правки старая карточка
+     будет показываться ещё долго. Сбросить кеш Telegram можно, отправив
+     ссылку боту @WebpageBot. -->
+
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Black Cobra Production">
 <meta property="og:locale" content="ru_RU">
 <meta property="og:title" content="ПАВЕЛ ИЗ ТАРСА">
 <meta property="og:description" content="Человек, которого избрал Бог. Исторический сериал: 1 сезон, 8 серий по 40–47 минут. Съёмки — Северная Осетия и Кисловодск.">
-<meta property="og:url" content="assets/../">
-<meta property="og:image" content="assets/og.jpg">
+<meta property="og:url" content="https://jim-creater.github.io/Pavel/">
+<meta property="og:image" content="https://jim-creater.github.io/Pavel/assets/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:alt" content="Павел из Тарса — человек уходит по дороге в горное ущелье">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="ПАВЕЛ ИЗ ТАРСА">
 <meta name="twitter:description" content="Человек, которого избрал Бог. 1 сезон · 8 серий · 40–47 мин.">
-<meta name="twitter:image" content="assets/og.jpg">
+<meta name="twitter:image" content="https://jim-creater.github.io/Pavel/assets/og.jpg">
 
 <!-- Два шрифта, которые видны в первом экране, грузим заранее.
      Остальные подтянутся по мере надобности. -->
@@ -479,10 +482,22 @@
     </div>
 
     <div class="refs rise" style="margin-top:clamp(48px,7vh,88px)">
-      <div><b>Дом Давида</b><span>2025 · масштаб на скромном бюджете</span></div>
-      <div><b>Избранные</b><span>2017– · интонация, живые диалоги</span></div>
-      <div><b>Павел, апостол Христа</b><span>2018 · тон и достоверность быта</span></div>
-      <div><b>Страсти Христовы</b><span>2004 · фактура, свет, аскеза кадра</span></div>
+      <figure>
+        <img src="assets/refs/house-of-david.webp" alt="Кадр из сериала «Дом Давида»" loading="lazy" decoding="async">
+        <figcaption><b>Дом Давида</b><span>2025 · масштаб на скромном бюджете</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/refs/the-chosen.webp" alt="Кадр из сериала «Избранные»" loading="lazy" decoding="async">
+        <figcaption><b>Избранные</b><span>2017– · интонация, живые диалоги</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/refs/paul-apostle.webp" alt="Кадр из фильма «Павел, апостол Христа»" loading="lazy" decoding="async">
+        <figcaption><b>Павел, апостол Христа</b><span>2018 · тон и достоверность быта</span></figcaption>
+      </figure>
+      <figure>
+        <img src="assets/refs/passion.webp" alt="Кадр из фильма «Страсти Христовы»" loading="lazy" decoding="async">
+        <figcaption><b>Страсти Христовы</b><span>2004 · фактура, свет, аскеза кадра</span></figcaption>
+      </figure>
     </div>
   </div>
 </section>
@@ -500,7 +515,13 @@
         <p>Этот сериал — не проповедь. Это портрет человека, который прошёл через всё и не потерял голос. И я верю, что сегодня миру нужен именно такой рассказ: о стойкости, о способности меняться, о цене слова и о том, как один упрямый, страстный, ироничный и сомневающийся человек может изменить ход истории.</p>
       </div>
 
-      <p class="byline rise">Светлана Кобракова · генеральный продюсер, Black Cobra Production</p>
+      <div class="author rise">
+        <img src="assets/svetlana-kobrakova.webp" alt="Светлана Кобракова" loading="lazy" decoding="async">
+        <div>
+          <b>Светлана Кобракова</b>
+          <span>Генеральный продюсер, Black Cobra Production</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>

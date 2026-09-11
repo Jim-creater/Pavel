@@ -7,6 +7,33 @@
 var RM  = matchMedia('(prefers-reduced-motion: reduce)').matches;
 var MOB = matchMedia('(max-width: 768px)').matches;
 
+/* ── всегда начинаем сверху ────────────────────────────── */
+/* Браузер по умолчанию возвращает страницу туда, где её закрыли
+   в прошлый раз. На телефоне это особенно заметно: длинный лендинг
+   открывается с середины, и человек не понимает, что произошло.
+   Забираем управление себе. Якорь в адресе уважаем — на него
+   переходим уже после того, как GSAP посчитает свои позиции,
+   иначе закреплённый блок «Поворот» сдвигает всю раскладку
+   и переход промахивается мимо цели. */
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+
+function startPosition(){
+  if (location.hash){
+    var t = document.querySelector(location.hash);
+    if (t) t.scrollIntoView({behavior:'instant', block:'start'});
+  } else {
+    scrollTo(0, 0);
+  }
+}
+startPosition();
+/* Дважды: ScrollTrigger при пересчёте возвращает браузеру право
+   восстанавливать позицию и делает это уже после load, поэтому
+   одной установки в начале скрипта не хватает — проверено. */
+addEventListener('load', function(){
+  startPosition();
+  requestAnimationFrame(startPosition);
+});
+
 /* ── год в подвале ─────────────────────────────────────── */
 var yr = document.getElementById('yr');
 if (yr) yr.textContent = new Date().getFullYear();
@@ -234,7 +261,13 @@ if (window.gsap && window.ScrollTrigger && !RM){
 
   tl.to({}, {duration:.14}, .86);
 
-  addEventListener('load', function(){ ScrollTrigger.refresh(); });
+  addEventListener('load', function(){
+    ScrollTrigger.refresh();
+    /* Позиции пересчитаны — только теперь якорь встанет точно,
+       а страница без якоря окончательно вернётся наверх. */
+    startPosition();
+    requestAnimationFrame(startPosition);
+  });
 
 } else {
   /* GSAP не загрузился ИЛИ человек попросил меньше движения —

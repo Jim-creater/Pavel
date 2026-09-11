@@ -87,7 +87,7 @@ function sweep(){
    на экране. Фаза у каждого кадра своя: если все начнут дышать
    в такт, страница станет похожа на заставку. */
 if (!RM){
-  var shots = [].slice.call(document.querySelectorAll('.ep-img img, .shot img'));
+  var shots = [].slice.call(document.querySelectorAll('.ep-img img, .shot img, .refs figure > img'));
   shots.forEach(function(img, i){
     img.style.animationDelay = -((i * 4.7) % 22).toFixed(1) + 's';
   });

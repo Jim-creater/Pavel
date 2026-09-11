@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <!-- Вспышка на дамасской дороге: главный образ проекта.
+       Анаморфный блик на базальтовой черноте, золото из палитры сайта. -->
+  <defs>
+    <radialGradient id="glow" cx="50%" cy="46%" r="46%">
+      <stop offset="0%"   stop-color="#FFFDF5"/>
+      <stop offset="14%"  stop-color="#F3E2B4"/>
+      <stop offset="42%"  stop-color="#C9922B" stop-opacity=".55"/>
+      <stop offset="100%" stop-color="#C9922B" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="flare" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%"   stop-color="#C9922B" stop-opacity="0"/>
+      <stop offset="28%"  stop-color="#E8C77A" stop-opacity=".7"/>
+      <stop offset="50%"  stop-color="#FFFDF5"/>
+      <stop offset="72%"  stop-color="#E8C77A" stop-opacity=".7"/>
+      <stop offset="100%" stop-color="#C9922B" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="64" height="64" fill="#0A0B0A"/>
+  <circle cx="32" cy="29.5" r="29" fill="url(#glow)"/>
+  <rect x="2" y="28.1" width="60" height="2.8" rx="1.4" fill="url(#flare)"/>
+  <circle cx="32" cy="29.5" r="3.4" fill="#FFFDF5"/>
+</svg>

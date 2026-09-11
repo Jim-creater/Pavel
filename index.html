@@ -1,0 +1,565 @@
+<!doctype html>
+<html lang="ru" data-act="before">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ПАВЕЛ ИЗ ТАРСА — исторический сериал · Black Cobra Production</title>
+<meta name="description" content="Исторический драматический сериал. 1 сезон, 8 серий по 40–47 минут. Съёмки — Северная Осетия и Кисловодск. Black Cobra Production.">
+<meta name="theme-color" content="#0A0B0A">
+
+<!-- Значок вкладки: вспышка на дамасской дороге.
+     svg — основной, ico — для старых браузеров, png — для iOS. -->
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="32x32">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+
+<!-- Превью ссылки в мессенджерах.
+     ВАЖНО: пока адреса относительные, и часть мессенджеров покажет ссылку
+     без картинки. Как только появится адрес — хоть домен, хоть страница
+     GitHub Pages вида https://имя.github.io/репозиторий/ — впишите его
+     в og:url и og:image ниже полностью, вместе с https://. -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Black Cobra Production">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:title" content="ПАВЕЛ ИЗ ТАРСА">
+<meta property="og:description" content="Человек, которого избрал Бог. Исторический сериал: 1 сезон, 8 серий по 40–47 минут. Съёмки — Северная Осетия и Кисловодск.">
+<meta property="og:url" content="assets/../">
+<meta property="og:image" content="assets/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Павел из Тарса — человек уходит по дороге в горное ущелье">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="ПАВЕЛ ИЗ ТАРСА">
+<meta name="twitter:description" content="Человек, которого избрал Бог. 1 сезон · 8 серий · 40–47 мин.">
+<meta name="twitter:image" content="assets/og.jpg">
+
+<!-- Два шрифта, которые видны в первом экране, грузим заранее.
+     Остальные подтянутся по мере надобности. -->
+<link rel="preload" as="font" type="font/woff2" crossorigin
+      href="fonts/cormorant-garamond-cyrillic-300-normal.woff2">
+<link rel="preload" as="font" type="font/woff2" crossorigin
+      href="fonts/golos-text-cyrillic-400-normal.woff2">
+<link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+<div class="grain"></div>
+<div class="progress" id="progress" aria-hidden="true"></div>
+
+<!-- ═══════════ ШАПКА ═══════════ -->
+<header class="nav" id="nav">
+  <!-- Логотип набран текстом: картинка лежала на стороннем домене
+       и каждая загрузка страницы ждала чужой сервер. Если нужен
+       знак, положите файл в assets/ и верните <img> сюда. -->
+  <a class="brand" href="#top">
+    <b>BLACK COBRA</b><span>PRODUCTION</span>
+  </a>
+  <button class="sound" id="sound" type="button" aria-pressed="false" aria-label="Включить звук">
+    <span class="bars" aria-hidden="true"><i></i><i></i><i></i></span>
+    <span>Звук</span>
+  </button>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="menu">Меню</button>
+  <nav class="menu" id="menu">
+    <a href="#synopsis">Синопсис</a>
+    <a href="#episodes">Сцены</a>
+    <a href="#turn">Поворот</a>
+    <a href="#hero-char">Герой</a>
+    <a href="#world">Мир</a>
+    <a href="#look">Визуал</a>
+    <a href="#contacts">Контакты</a>
+  </nav>
+</header>
+
+<!-- ═══════════ ПЕРВЫЙ ЭКРАН ═══════════ -->
+<section class="hero" id="top">
+  <div class="hero-media">
+    <video id="heroVid" autoplay muted loop playsinline preload="metadata"
+           poster="assets/video/hero-loop.webp"></video>
+    <noscript><img src="assets/01-hero-bg.webp" alt="Одинокая фигура на дороге в горном ущелье"></noscript>
+  </div>
+  <div class="hero-in wrap">
+    <h1 class="h1">Павел<br>из Тарса</h1>
+    <p class="tagline">Человек, которого избрал Бог</p>
+  </div>
+</section>
+
+<!-- Характеристики выехали из первого экрана в отдельную строку:
+     титру они мешали, а здесь читаются за одну секунду. -->
+<div class="specs">
+  <div><b>Статус</b><span>В разработке</span></div>
+  <div><b>Формат</b><span>Сериал, 1 сезон</span></div>
+  <div><b>Серий</b><span>8 × 40–47 мин</span></div>
+  <div><b>Жанр</b><span>Историческая драма</span></div>
+  <div><b>Съёмки</b><span>Северная Осетия, Кисловодск</span></div>
+</div>
+
+<!-- ═══════════ О ПРОЕКТЕ ═══════════ -->
+<section class="section" id="tagline">
+  <div class="wrap">
+    <h2 class="h2 rv c1-8">Бог нашёл его,<br>когда он этого не искал.</h2>
+    <div class="g12" style="margin-top:clamp(38px,6vh,72px)">
+      <p class="lead rise c5-13">Слепота на дороге, исцеление в Дамаске, цепи в Риме — жизнь Павла стала путём, где испытания не отменяли миссии, а подтверждали её. Двадцать тысяч километров пути, четырнадцать писем, переживших империю, и один подвиг, который он называл добрым. Восемь серий о том, как человек, привыкший карать, научился свидетельствовать.</p>
+    </div>
+    <div class="dl rise" style="margin-top:clamp(44px,7vh,84px)">
+      <div>
+        <span class="r">Разработано</span>
+        <p>Поэпизодный план на 8 серий, визуальная библия, палитра и типографика, листы персонажа в двух возрастах, 17 ключевых кадров.</p>
+      </div>
+      <div>
+        <span class="r">Вдохновение</span>
+        <p>Иннокентий Херсонский, «Жизнь Святого Апостола Павла». Книга задала хронологию и интонацию. Оригинальный сценарий.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="band">
+  <img src="assets/journeys.webp" alt="Горная дорога, уходящая за перевал" loading="lazy" decoding="async">
+  <div class="band-cap"><div class="wrap">
+    <div class="t serif">Двадцать тысяч километров. Почти всё — пешком.</div>
+    <div class="s">Кадр визуальной разработки · Северный Кавказ</div>
+  </div></div>
+</div>
+
+<!-- ═══════════ СИНОПСИС ═══════════ -->
+<section class="section" id="synopsis">
+  <div class="wrap">
+    <span class="kicker rise">Синопсис</span>
+    <h2 class="h2 rv c1-8">Три дня темноты,<br>которые разделили историю надвое</h2>
+  </div>
+
+  <div class="wrap g12" style="margin-top:clamp(52px,9vh,120px)">
+    <blockquote class="scripture quote rv c1-6" style="margin:0">
+      «Савл, Савл, что ты гонишь Меня?»
+      <cite>Деян. 9:4</cite>
+    </blockquote>
+    <div class="body rise c7-13">
+      <p>Тарс, Киликия, начало первого века. Сын состоятельного иудея, римский гражданин по рождению, ремесленник по ремеслу: он шьёт грубую парусину и знает Закон наизусть. В Иерусалиме, у ног Гамалиила, он становится лучшим учеником лучшей школы — и самым непримиримым. Когда толпа побивает камнями Стефана, он сторожит одежды свидетелей и не отводит глаз.</p>
+      <p>Ему дают грамоты на арест последователей новой секты в Дамаске. Восемь дней пути. На середине дороги свет сбивает его с ног, и три дня он не видит ничего. За ним приходит человек, которого он ехал арестовать.</p>
+      <p>Дальше — тридцать пять лет дороги. Его не принимают ни свои, ни чужие. Он спорит с Петром, ссорится с Варнавой, зарабатывает на жизнь руками, чтобы никого не обременять. Он говорит с философами в Афинах, поднимает мятеж ремесленников в Ефесе, тонет у Мелита и добирается до Рима под конвоем.</p>
+      <p>В 67 году, в римской камере, где горит одна лампа, он пишет последнее письмо. Сериал заканчивается пустой дорогой на рассвете. Казни в кадре нет.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ПОЧЕМУ ═══════════ -->
+<section class="section" id="why">
+  <div class="wrap">
+    <h2 class="h2 rv c1-8">Библейское кино на русском языке сейчас никто не делает</h2>
+
+    <div class="rows rise" style="margin-top:clamp(44px,7vh,84px)">
+      <div class="row">
+        <div class="n serif">I</div>
+        <div class="t">Свободная ниша</div>
+        <div class="d">«Дом Давида», «Избранные», «Иисус» — зарубежные платформы собирают на этом материале десятки миллионов зрителей. Русскоязычного игрового сериала о раннем христианстве нет ни одного.</div>
+      </div>
+      <div class="row">
+        <div class="n serif">II</div>
+        <div class="t">Готовая аудитория</div>
+        <div class="d">Более 60% россиян относят себя к православным. Это не нишевый зритель, а самая большая аудитория страны, для которой почти ничего не снимают.</div>
+      </div>
+      <div class="row">
+        <div class="n serif">III</div>
+        <div class="t">Экономика</div>
+        <div class="d">Кавказ вместо Ближнего Востока: тот же камень, туман и альпийский луг — без валютных смен, логистики и виз. Экспедиция вместо экспедиции за границу.</div>
+      </div>
+    </div>
+
+    <p class="lead rise" style="margin-top:clamp(44px,7vh,80px)">Мы не снимаем житие. Мы снимаем биографию человека, который был неправ, узнал об этом в одну секунду и потратил остаток жизни на то, чтобы это исправить. Такая история работает независимо от того, верит зритель или нет.</p>
+  </div>
+</section>
+
+<!-- ═══════════ СЕРИИ ═══════════ -->
+<section class="section" id="episodes">
+  <div class="wide">
+    <span class="kicker rise">План тизера</span>
+    <h2 class="h2 rv c1-8">Восемь сцен</h2>
+
+    <div class="eps" style="margin-top:clamp(46px,7vh,90px)">
+
+      <article class="ep full rise">
+        <div class="ep-img">
+          <img src="assets/02-tarsus-bg.webp" alt="Мастерская скинотворца" loading="lazy" decoding="async">
+          <span class="ep-n">I</span>
+          <video class="ep-v" data-vid="assets/video/ep-1.mp4" muted loop playsinline preload="none"></video>
+        </div>
+        <div class="ep-txt">
+          <h3 class="ep-t">Сын закона</h3>
+          <div class="ep-y">Тарс, Иерусалим · ок. 34 г.</div>
+          <p class="ep-d">Лучший ученик Гамалиила получает первое поручение от синедриона. Он не бросит ни одного камня в Стефана. Он сделает хуже — он согласится.</p>
+        </div>
+      </article>
+
+      <article class="ep full rise">
+        <div class="ep-img">
+          <img src="assets/04-damascus-bg.webp" alt="Дамасская дорога" loading="lazy" decoding="async">
+          <span class="ep-n">II</span>
+          <video class="ep-v" data-vid="assets/video/ep-2.mp4" muted loop playsinline preload="none"></video>
+        </div>
+        <div class="ep-txt">
+          <h3 class="ep-t">Дорога в Дамаск</h3>
+          <div class="ep-y">Дамасская дорога · ок. 36 г.</div>
+          <p class="ep-d">Восемь дней пути с грамотами на арест. На середине дороги — свет. Три дня темноты в чужом доме, и человек, которого он ехал взять под стражу, приходит к нему сам.</p>
+        </div>
+      </article>
+
+      <article class="ep rise">
+        <div class="ep-img">
+          <img src="assets/05-basket-bg.webp" alt="Побег из Дамаска в корзине" loading="lazy" decoding="async">
+          <span class="ep-n">III</span>
+          <video class="ep-v" data-vid="assets/video/ep-3.mp4" muted loop playsinline preload="none"></video>
+        </div>
+        <div class="ep-txt">
+          <h3 class="ep-t">Чужой среди своих</h3>
+          <div class="ep-y">Дамаск, Аравия, Антиохия · 36–45</div>
+          <p class="ep-d">Иудеи считают его предателем, христиане — провокатором. Побег из города в корзине по стене. Первая община, где слово «христианин» произносят вслух.</p>
+        </div>
+      </article>
+
+      <article class="ep rise">
+        <div class="ep-img">
+          <img src="assets/journeys.webp" alt="Первое путешествие" loading="lazy" decoding="async">
+          <span class="ep-n">IV</span>
+          <video class="ep-v" data-vid="assets/video/ep-4.mp4" muted loop playsinline preload="none"></video>
+        </div>
+        <div class="ep-txt">
+          <h3 class="ep-t">Первая дорога</h3>
+          <div class="ep-y">Кипр, Галатия, Иерусалим · 46–49</div>
+          <p class="ep-d">Первое путешествие и первый раскол: должен ли грек становиться иудеем, чтобы стать христианином. Спор с Петром лицом к лицу. Апостольский собор.</p>
+        </div>
+      </article>
+
+      <article class="ep full rise">
+        <div class="ep-img">
+          <img src="assets/05-lystra.webp" alt="Листра: побиение камнями" loading="lazy" decoding="async">
+          <span class="ep-n">V</span>
+          <video class="ep-v" data-vid="assets/video/ep-5.mp4" muted loop playsinline preload="none"></video>
+        </div>
+        <div class="ep-txt">
+          <h3 class="ep-t">Листра</h3>
+          <div class="ep-y">Ликаония · ок. 47 г.</div>
+          <p class="ep-d">Павла побивает камнями обезумевшая толпа. Он падает, окровавленный, избитый, безжизненный. Камни продолжают сыпаться на его неподвижное тело. Толпа расходится, оставляя его умирать.</p>
+        </div>
+      </article>
+
+      <article class="ep rise">
+        <div class="ep-img">
+          <img src="assets/storm.webp" alt="Буря на море" loading="lazy" decoding="async">
+          <span class="ep-n">VI</span>
+          <video class="ep-v" data-vid="assets/video/ep-7.mp4" muted loop playsinline preload="none"></video>
+        </div>
+        <div class="ep-txt">
+          <h3 class="ep-t">Узник кесаря</h3>
+          <div class="ep-y">Иерусалим, Кесария, море · 57–60</div>
+          <p class="ep-d">Арест в храме, два года заключения без приговора, апелляция к кесарю как римского гражданина. И четырнадцать суток бури, после которых — берег Мелита и двести семьдесят шесть выживших.</p>
+        </div>
+      </article>
+
+      <article class="ep rise">
+        <div class="ep-img">
+          <img src="assets/08-rome-bg.webp" alt="Римская камера" loading="lazy" decoding="async">
+          <span class="ep-n">VII</span>
+          <video class="ep-v" data-vid="assets/video/ep-8.mp4" muted loop playsinline preload="none"></video>
+        </div>
+        <div class="ep-txt">
+          <h3 class="ep-t">Рим</h3>
+          <div class="ep-y">Рим · 61–67</div>
+          <p class="ep-d">Съёмная квартира под стражей, потом камера. Пожар, гонения, суд. Последние письма Тимофею.</p>
+        </div>
+      </article>
+
+      <article class="ep full rise">
+        <div class="ep-img">
+          <img src="assets/09-rome-road.webp" alt="Процессия на дороге за городской стеной Рима" loading="lazy" decoding="async">
+          <span class="ep-n">VIII</span>
+          <video class="ep-v" data-vid="assets/video/ep-9.mp4" muted loop playsinline preload="none"></video>
+        </div>
+        <div class="ep-txt">
+          <h3 class="ep-t">Окрестности Рима</h3>
+          <div class="ep-y">За городской стеной · 67 г.</div>
+          <p class="ep-d">Раннее утро. По пыльной дороге среди холмов и редких олив движется небольшая процессия: впереди римские воины, за ними Павел. Рук ему не связывают — он римский гражданин, оковы ему не полагаются, но два стражника держатся вплотную. Дорога выводит на каменистую площадку у подножия холма, где уже всё готово. Палач молча проверяет остриё. Он не смотрит на апостола: привычная работа, которую нужно исполнить без суеты.</p>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ПОВОРОТ / ДАМАСК ═══════════ -->
+<section id="turn">
+  <div class="wrap" style="padding-block:var(--sec) clamp(40px,6vh,72px)">
+    <span class="kicker rise">Главный приём</span>
+    <h2 class="h2 rv c1-8">Сезон делится не на части, а на две температуры</h2>
+    <div class="g12" style="margin-top:clamp(32px,5vh,56px)">
+      <div class="c5-13">
+        <p class="lead rise">До Дамаска мир на экране холодный: базальт, пепел, дорожная пыль, ни одного тёплого источника света. После вспышки та же натура, те же люди и та же камера — но золото, лён и олива. Ничего не объясняется репликами. Зритель просто чувствует, что мир сменил температуру.</p>
+        <p class="rise muted small" style="margin-top:18px;max-width:56ch">Прокрутите блок ниже: это не видео, а сам сайт — он переключает палитру вместе с сериалом и дальше остаётся тёплым до конца страницы.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="turn-stage" id="turnStage">
+    <video class="lay before" data-vid="assets/video/turn-before.mp4"
+           poster="assets/video/turn-before.webp" muted loop playsinline preload="none"></video>
+    <video class="lay after"  data-vid="assets/video/turn-after.mp4"
+           poster="assets/video/turn-after.webp" muted loop playsinline preload="none"></video>
+    <div class="turn-flash" id="turnFlash"></div>
+    <div class="turn-tag" id="turnTag">Акт I · <em>Савл</em></div>
+  </div>
+
+  <div class="wrap" style="padding-block:clamp(44px,7vh,88px) var(--sec)">
+    <div class="pal rise">
+      <div>
+        <div class="cap">Акт I · до Дамаска</div>
+        <div class="sw">
+          <i style="background:#0B0C0B" data-n="Базальт"></i>
+          <i style="background:#23241F" data-n="Сланец"></i>
+          <i style="background:#5A5850" data-n="Пепел"></i>
+          <i style="background:#8C8272" data-n="Пыль"></i>
+          <i style="background:#6B241B" data-n="Кирпич"></i>
+        </div>
+        <p class="muted small" style="margin-top:18px;max-width:44ch">Холодная десатурация, туман, естественный свет. Кирпичный — единственный акцент, не чаще двух раз за серию.</p>
+      </div>
+      <div>
+        <div class="cap warm">Акт III · после Дамаска</div>
+        <div class="sw">
+          <i style="background:#12110E" data-n="Ночь"></i>
+          <i style="background:#3E4A2C" data-n="Олива"></i>
+          <i style="background:#B8873A" data-n="Золото"></i>
+          <i style="background:#E6DAC2" class="lt" data-n="Лён"></i>
+          <i style="background:#FFFDF5" class="lt" data-n="Вспышка"></i>
+        </div>
+        <p class="muted small" style="margin-top:18px;max-width:44ch">Низкое солнце, пыль в лучах, тёплая ночь. Свет здесь действующее лицо: точка на горизонте, вспышка на дороге, лампа в римской камере.</p>
+      </div>
+    </div>
+
+    <div class="rows rise" style="margin-top:clamp(48px,7vh,88px)">
+      <div class="row">
+        <div class="n serif">·</div>
+        <div class="t">Что не показываем</div>
+        <div class="d">В сцене на дороге — только свет, никакой фигуры Христа.</div>
+      </div>
+      <div class="row">
+        <div class="n serif">·</div>
+        <div class="t">Чего не будет в финале</div>
+        <div class="d">Казни в кадре нет. Меч упоминается бликом металла. Последний кадр — пустая дорога на рассвете.</div>
+      </div>
+      <div class="row">
+        <div class="n serif">·</div>
+        <div class="t">Звук</div>
+        <div class="d">Тишина с редкими звуками: шаг по камню, ветер в ущелье, скрип верёвки. И один удар — на вспышке. Музыкальная тема одна — авторские песнопения на арамейском, языке, на котором говорил сам Павел.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ГЕРОЙ ═══════════ -->
+<section class="section" id="hero-char">
+  <div class="wide">
+    <h2 class="h2 rv c1-8">Одно лицо на тридцать пять лет</h2>
+    <div class="g12" style="margin-top:clamp(32px,5vh,56px)">
+      <div class="body rise c5-13">
+        <p>На роль утверждён конкретный актёр. Левантийский тип, около сорока: тяжёлые тёмные брови, глубоко посаженные глаза, крупный прямой нос, плотное телосложение. И светло-голубая радужка — единственный холодный цвет на тёплом лице, который работает как визуальная подпись героя.</p>
+        <p>История охватывает тридцать пять лет, поэтому разработаны два возрастных листа: Савл в Тарсе — тридцатилетний, жёстче лицом, борода короче; Павел в Риме — под семьдесят, седина, запавшие щёки. Между ними зритель должен узнавать одного и того же человека.</p>
+      </div>
+    </div>
+
+    <div class="pair rise" style="margin-top:clamp(44px,7vh,84px)">
+      <figure class="shot wide-3x2">
+        <img src="assets/char-young.webp" alt="Лист персонажа: Савл" loading="lazy" decoding="async">
+        <figcaption><b>Савл</b><span>Серии I–II · ок. 30 лет</span></figcaption>
+      </figure>
+      <figure class="shot wide-3x2">
+        <img src="assets/char-adult.webp" alt="Лист персонажа: Павел" loading="lazy" decoding="async">
+        <figcaption><b>Павел</b><span>Серии III–VIII · ок. 70 лет</span></figcaption>
+      </figure>
+    </div>
+    <div class="pair rise" style="margin-top:var(--gap)">
+      <figure class="shot">
+        <img src="assets/cu-jerusalem.webp" alt="Крупный план: гонитель" loading="lazy" decoding="async">
+        <figcaption><b>Гонитель</b><span>Серия I · Иерусалим</span></figcaption>
+      </figure>
+      <figure class="shot has-v">
+        <img src="assets/darkness.webp" alt="Крупный план: три дня во тьме" loading="lazy" decoding="async">
+        <video class="ep-v" data-vid="assets/video/darkness.mp4" muted loop playsinline preload="none"></video>
+        <figcaption><b>Слепота</b><span>Серия II · три дня во тьме</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ОКРУЖЕНИЕ ═══════════ -->
+<section class="section" id="people" style="padding-top:0">
+  <div class="wide">
+    <h2 class="h2 rv c1-6">Кто рядом</h2>
+    <div class="dl rise" style="margin-top:clamp(38px,6vh,68px)">
+      <div><h4>Гамалиил</h4><p>Учитель. Мудрый фарисей, который советует синедриону не трогать новую секту — и чей лучший ученик поступает ровно наоборот.</p></div>
+      <div><h4>Стефан</h4><p>Первый мученик. Гибнет в первой серии и остаётся в голове героя до последней. Единственный, чьё лицо Павел вспоминает в темноте.</p></div>
+      <div><h4>Анания</h4><p>Тот, кто приходит к слепому гонителю в чужом доме. Знает, кто перед ним, и всё равно кладёт руку на голову.</p></div>
+      <div><h4>Варнава</h4><p>Единственный, кто поручился за него перед общиной. Друг, соратник — и человек, с которым он в итоге расстанется из-за спора.</p></div>
+      <div><h4>Сила</h4><p>Спутник второго путешествия. С ним они поют в филиппийской темнице, когда начинается землетрясение.</p></div>
+      <div><h4>Лука</h4><p>Врач и летописец. Тот, чьими глазами мы, по сути, всё это и видим. Остаётся с ним до конца, в римской камере.</p></div>
+      <div><h4>Тимофей</h4><p>Ученик, почти сын. Ему адресованы последние два письма — и просьба принести плащ, оставленный в Троаде.</p></div>
+      <div><h4>Нерон</h4><p>Не злодей с трона, а бюрократическая машина, для которой дело Павла — рядовая папка. Так страшнее.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="band has-v">
+  <img src="assets/loc-necropolis.webp" alt="Даргавс, Мёртвый город" loading="lazy" decoding="async">
+  <video class="band-v" data-vid="assets/video/dargavs.mp4" muted loop playsinline preload="none"></video>
+  <div class="band-cap"><div class="wrap">
+    <div class="t serif">Даргавс. Девяносто пять склепов на склоне и туман до полудня.</div>
+    <div class="s">Северная Осетия · основная натура сезона</div>
+  </div></div>
+</div>
+
+<!-- ═══════════ МИР ═══════════ -->
+<section class="section" id="world">
+  <div class="wide">
+    <span class="kicker rise">Мир сериала</span>
+    <h2 class="h2 rv c1-8">Иудея снимается на Кавказе</h2>
+    <div class="g12" style="margin-top:clamp(32px,5vh,56px)">
+      <div class="body rise c5-13">
+        <p>Мы сознательно не ищем «Ближний Восток». Даргавс, Кисловодск и окрестности дают тёмный камень, альпийский луг, ущелья и низкое облако — фактуру, которой нет ни у одного зарубежного аналога. Это решение одновременно удешевляет производство и даёт картине собственное лицо.</p>
+        <p>Весь визуальный материал проекта с самого начала генерировался под Кавказ, а не под Палестину, — чтобы промо совпало с тем, что реально будет снято.</p>
+      </div>
+    </div>
+
+    <div class="locs rise" style="margin-top:clamp(44px,7vh,84px)">
+      <figure class="shot">
+        <img src="assets/journeys.webp" alt="Альпийские луга" loading="lazy" decoding="async">
+        <figcaption><b>Плато</b><span>Путешествия, Галатия, Македония</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/loc-necropolis.webp" alt="Даргавс" loading="lazy" decoding="async">
+        <figcaption><b>Даргавс</b><span>Мёртвый город</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/loc-arch.webp" alt="Скальная арка" loading="lazy" decoding="async">
+        <figcaption><b>Кисловодск</b><span>Кольцо-гора, плато</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/prison-full.webp" alt="Темница" loading="lazy" decoding="async">
+        <figcaption><b>Темница</b><span>Павильон · Филиппы, Рим</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/basket-full.webp" alt="Городская стена" loading="lazy" decoding="async">
+        <figcaption><b>Стена</b><span>Натура с достройкой · Дамаск</span></figcaption>
+      </figure>
+      <figure class="shot">
+        <img src="assets/storm.webp" alt="Палуба в шторм" loading="lazy" decoding="async">
+        <figcaption><b>Море</b><span>Графика или Чёрное море</span></figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ВИЗУАЛ ═══════════ -->
+<section class="section" id="look">
+  <div class="wrap">
+    <h2 class="h2 rv c1-8">Свет — действующее лицо, а не декорация</h2>
+
+    <div class="rows rise" style="margin-top:clamp(44px,7vh,84px)">
+      <div class="row">
+        <div class="n serif">I</div>
+        <div class="t">Камера</div>
+        <div class="d">Анаморфот 40 мм, кадр 2.39:1. Естественный свет, плотная дымка, мелкое плёночное зерно. Камера почти не двигается: движется мир вокруг героя.</div>
+      </div>
+      <div class="row">
+        <div class="n serif">II</div>
+        <div class="t">Свет</div>
+        <div class="d">Живёт отдельным слоем и присутствует везде: точкой на горизонте в первом кадре, вспышкой на дороге в середине, единственной лампой в римской камере в конце.</div>
+      </div>
+      <div class="row">
+        <div class="n serif">III</div>
+        <div class="t">Костюм и реквизит</div>
+        <div class="d">Исторически достоверный первый век: некрашеный лён, грубая шерсть, кожаные сандалии, верёвочные пояса. Никакой театральной парчи.</div>
+      </div>
+    </div>
+
+    <div class="refs rise" style="margin-top:clamp(48px,7vh,88px)">
+      <div><b>Дом Давида</b><span>2025 · масштаб на скромном бюджете</span></div>
+      <div><b>Избранные</b><span>2017– · интонация, живые диалоги</span></div>
+      <div><b>Павел, апостол Христа</b><span>2018 · тон и достоверность быта</span></div>
+      <div><b>Страсти Христовы</b><span>2004 · фактура, свет, аскеза кадра</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ СЛОВО АВТОРА ═══════════ -->
+<section class="section" id="author">
+  <div class="wrap g12">
+    <div class="c3-11">
+      <blockquote class="pull rv">Если Бог нашёл Савла на дороге, значит, никто не заперт в своей собственной истории навсегда.</blockquote>
+
+      <div class="body rise" style="margin-top:clamp(34px,5vh,60px)">
+        <p>Я делаю этот проект, потому что сегодня особенно важно показать, как человек может пройти сквозь собственную правоту и выйти с другой стороны — не сломленным, а преображённым. Павел не был «идеальным с рождения»: он гнал, судил, верил в свою миссию — и вдруг оказался повержен светом, который не просил.</p>
+        <p>В мире, где так легко делить людей на «своих» и «чужих», Павел напоминает: миссия не в том, чтобы уничтожать несогласных, а в том, чтобы нести свет туда, где его боятся. Он говорил и иудеям, и эллинам, свободным и рабам — и искал общий язык, а не повод для вражды. Это урок диалога, который сегодня звучит особенно остро.</p>
+        <p>И ещё это просто великая история пути и подвига. Мне хочется, чтобы зритель увидел: подвиг — это не только громкие победы. Подвиг — это когда ты до конца остаёшься верен тому, что считаешь истиной, даже если весь мир против. И когда ты оставляешь после себя не имя, а великие смыслы и закон.</p>
+        <p>Этот сериал — не проповедь. Это портрет человека, который прошёл через всё и не потерял голос. И я верю, что сегодня миру нужен именно такой рассказ: о стойкости, о способности меняться, о цене слова и о том, как один упрямый, страстный, ироничный и сомневающийся человек может изменить ход истории.</p>
+      </div>
+
+      <p class="byline rise">Светлана Кобракова · генеральный продюсер, Black Cobra Production</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ КОМАНДА ═══════════ -->
+<section class="section" id="team">
+  <div class="wrap">
+    <h2 class="h2 rv c1-6">Кто делает</h2>
+    <div class="dl rise" style="margin-top:clamp(38px,6vh,68px)">
+      <div><span class="r">Генеральный продюсер</span><h4 style="margin:0">Светлана Кобракова</h4><p style="margin-top:8px">Black Cobra Production</p></div>
+      <div><span class="r">Режиссёр-постановщик</span><h4 style="margin:0">Уточняется</h4></div>
+      <div><span class="r">Оператор-постановщик</span><h4 style="margin:0">Уточняется</h4></div>
+      <div><span class="r">Автор сценария</span><h4 style="margin:0">Уточняется</h4></div>
+      <div><span class="r">Художник-постановщик</span><h4 style="margin:0">Уточняется</h4></div>
+      <div><span class="r">Композитор</span><h4 style="margin:0">Уточняется</h4></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ ТИЗЕР ═══════════ -->
+<section class="section" id="teaser" style="padding-top:0">
+  <div class="wide">
+    <h2 class="h2 rv c1-6">Первый материал</h2>
+    <div class="teaser rise" style="margin-top:clamp(32px,5vh,56px)">
+      <video class="teaser-v" data-vid="assets/video/finale.mp4"
+             data-vid-vert="assets/vertical/finale-9x16.mp4"
+             data-poster-vert="assets/vertical/finale-9x16.webp"
+             poster="assets/video/finale.webp" muted loop playsinline preload="none"></video>
+      <div class="pl">
+        <i>&#9654;</i>
+        <b>Тизер в монтаже</b>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ КОНТАКТЫ ═══════════ -->
+<footer id="contacts">
+  <div class="wrap">
+    <span class="kicker rise">Контакты</span>
+    <h2 class="h2 rv c1-6">Поговорим</h2>
+
+    <div class="contacts rise">
+      <div><b>Почта</b><a href="mailto:black.cobra.kino@gmail.com">black.cobra.kino@gmail.com</a></div>
+      <div><b>Телефон</b><a href="tel:+79254231542">+7 (925) 423-15-42</a></div>
+      <div><b>Telegram</b><a href="https://t.me/BlackCobraPro" target="_blank" rel="noopener">@BlackCobraPro</a></div>
+    </div>
+
+    <div class="fine">
+      <strong style="color:var(--head);letter-spacing:.24em;font-size:11px">BLACK COBRA PRODUCTION</strong><br>
+      «Павел из Тарса» · промо-сайт проекта в разработке · <span id="yr"></span><br>
+      Оригинальный сценарий. Историческая основа и вдохновение: Иннокентий Херсонский, «Жизнь Святого Апостола Павла». Изображения на странице — материалы визуальной разработки, а не кадры готового сериала.
+    </div>
+  </div>
+</footer>
+
+<script src="vendor/gsap.min.js" defer></script>
+<script src="vendor/ScrollTrigger.min.js" defer></script>
+<script src="js/main.js" defer></script>
+<script src="js/audio.js" defer></script>
+</body>
+</html>

@@ -102,6 +102,10 @@ figure{margin:0}
    загрузка картинок, без риска для главного приёма. */
 .section{padding-block:var(--sec)}
 
+/* hidden обязан побеждать display из классов: без этого спрятанный
+   блок с display:grid продолжает показываться. */
+[hidden]{display:none !important}
+
 /* ── Контейнеры ──────────────────────────────────────────── */
 .wrap  {max-width:var(--w);     margin:0 auto;padding-inline:var(--pad)}
 .wide  {max-width:var(--wide);  margin:0 auto;padding-inline:var(--pad)}
@@ -398,6 +402,7 @@ html[data-sound="on"] .sound .bars i:nth-child(3){animation-delay:.3s}
   will-change:transform,opacity}
 .turn-stage .before{z-index:1}
 .turn-stage .after{z-index:2;opacity:0}
+.turn-frame{display:none}
 .turn-flash{
   position:absolute;z-index:3;left:50%;top:52%;width:18vmax;height:18vmax;margin:-9vmax 0 0 -9vmax;
   border-radius:50%;opacity:0;transform:scale(0);pointer-events:none;mix-blend-mode:screen;
@@ -411,6 +416,23 @@ html[data-sound="on"] .sound .bars i:nth-child(3){animation-delay:.3s}
   padding:12px 18px;backdrop-filter:blur(6px);
 }
 .turn-tag em{font-style:normal;color:var(--gold)}
+
+/* Вертикальный экран: вместо двух видео — два кадра 4:5 в рамке.
+   Кадр 2.33:1, обрезанный до 9:19, превращается в вертикальную
+   щель: от композиции не остаётся ничего. Поэтому на телефоне
+   показываем фотографию целиком, а вокруг — чёрный зал.
+   Режим выбирает скрипт при загрузке и ставит класс: если бы
+   выбирал медиазапрос, поворот телефона показал бы пустую сцену —
+   лишняя половина к тому моменту уже удалена из документа. */
+.turn-stage.pics .vid{display:none}
+.turn-stage.pics .turn-frame{
+  display:block;position:absolute;left:50%;top:50%;
+  width:min(calc(100% - var(--pad) * 2), 46svh);aspect-ratio:4/5;
+  transform:translate(-50%,-56%);overflow:hidden;background:#000;
+  box-shadow:0 30px 80px rgba(0,0,0,.55)
+}
+.turn-stage.pics .turn-tag{left:50%;right:auto;transform:translateX(-50%);
+  white-space:nowrap;bottom:clamp(46px,12svh,120px)}
 
 /* Палитры */
 .pal{display:grid;grid-template-columns:1fr 1fr;gap:clamp(28px,5vw,72px)}
@@ -488,6 +510,10 @@ html[data-sound="on"] .sound .bars i:nth-child(3){animation-delay:.3s}
 /* Автор. Портрет и подпись стоят слева отдельной колонкой и
    залипают: пока читаешь четыре абзаца, видно, кто это говорит.
    Углы прямые — скруглённых элементов на странице нет ни одного. */
+/* Два голоса подряд: между ними волосяная линия, а не рамка —
+   это по-прежнему один разворот, а не две карточки. */
+.voice + .voice{margin-top:clamp(56px,9vh,104px);padding-top:clamp(56px,9vh,104px);
+  border-top:1px solid var(--line-soft)}
 .said{position:sticky;top:104px;align-self:start}
 .said img{width:100%;max-width:250px;aspect-ratio:4/5;object-fit:cover;filter:saturate(.85)}
 .said b{display:block;margin-top:clamp(16px,2vh,24px);
@@ -536,8 +562,9 @@ footer{border-top:1px solid var(--line-soft);padding-block:clamp(64px,9vh,120px)
 .contacts{display:grid;grid-template-columns:repeat(3,1fr);gap:var(--gap);
   margin-top:clamp(30px,5vh,54px)}
 @media(max-width:760px){.contacts{grid-template-columns:1fr;gap:26px}}
-.contacts a{text-decoration:none;color:var(--head);font-size:clamp(17px,1.5vw,21px);
+.contacts a{display:block;text-decoration:none;color:var(--head);font-size:clamp(17px,1.5vw,21px);
   font-family:"Cormorant Garamond",serif;transition:color .18s ease}
+.contacts a + a{margin-top:7px}
 @media(hover:hover) and (pointer:fine){.contacts a:hover{color:var(--gold)}}
 .contacts b{display:block;font:600 10px/1 "Golos Text",sans-serif;letter-spacing:.24em;
   text-transform:uppercase;color:var(--dim);margin-bottom:12px}

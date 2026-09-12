@@ -78,7 +78,7 @@
   <div class="hero-media">
     <video id="heroVid" autoplay muted loop playsinline preload="metadata"
            poster="assets/video/hero-loop.webp"></video>
-    <noscript><img src="assets/01-hero-bg.webp" alt="Одинокая фигура на дороге в горном ущелье"></noscript>
+    <noscript><img src="assets/video/hero-loop.webp" alt="Одинокая фигура на дороге в горном ущелье"></noscript>
   </div>
   <div class="hero-in wrap">
     <h1 class="h1">Павел<br>из Тарса</h1>
@@ -232,7 +232,7 @@
         <div class="ep-img">
           <img src="assets/05-lystra.webp" alt="Листра: побиение камнями" loading="lazy" decoding="async">
           <span class="ep-n">V</span>
-          <video class="ep-v" data-vid="assets/video/ep-5.mp4" muted loop playsinline preload="none"></video>
+          <video class="ep-v" data-vid="assets/video/ep-5.mp4" data-webm muted loop playsinline preload="none"></video>
         </div>
         <div class="ep-txt">
           <h3 class="ep-t">Листра</h3>
@@ -271,7 +271,7 @@
         <div class="ep-img">
           <img src="assets/09-rome-road.webp" alt="Процессия на дороге за городской стеной Рима" loading="lazy" decoding="async">
           <span class="ep-n">VIII</span>
-          <video class="ep-v" data-vid="assets/video/ep-9.mp4" muted loop playsinline preload="none"></video>
+          <video class="ep-v" data-vid="assets/video/ep-9.mp4" data-webm muted loop playsinline preload="none"></video>
         </div>
         <div class="ep-txt">
           <h3 class="ep-t">Окрестности Рима</h3>
@@ -298,10 +298,19 @@
   </div>
 
   <div class="turn-stage" id="turnStage">
-    <video class="lay before" data-vid="assets/video/turn-before.mp4"
+    <!-- широкий экран: два видеослоя -->
+    <video class="lay vid before" data-vid="assets/video/turn-before.mp4"
            poster="assets/video/turn-before.webp" muted loop playsinline preload="none"></video>
-    <video class="lay after"  data-vid="assets/video/turn-after.mp4"
-           poster="assets/video/turn-after.webp" muted loop playsinline preload="none"></video>
+    <video class="lay vid after"  data-vid="assets/video/turn-after.mp4"
+           poster="assets/video/turn-after.webp"  muted loop playsinline preload="none"></video>
+    <!-- телефон: тот же момент, но кадрами 4:5 в рамке. Широкий кадр 2.33:1
+         на вертикальном экране пришлось бы обрезать до полоски. -->
+    <div class="turn-frame" id="turnFrame">
+      <img class="lay pic before" alt="Савл на дороге в Дамаск"
+           data-src="assets/video/turn-before-vert.webp" decoding="async">
+      <img class="lay pic after"  alt="Павел на коленях в свете"
+           data-src="assets/video/turn-after-vert.webp"  decoding="async">
+    </div>
     <div class="turn-flash" id="turnFlash"></div>
     <div class="turn-tag" id="turnTag">Акт I · <em>Савл</em></div>
   </div>
@@ -498,10 +507,31 @@
   </div>
 </section>
 
-<!-- ═══════════ СЛОВО АВТОРА ═══════════ -->
+<!-- ═══════════ ПРЯМАЯ РЕЧЬ ═══════════ -->
 <section class="section" id="author">
-  <div class="wrap g12">
-    <!-- Автор идёт первым и в разметке, и в чтении: сначала видно,
+  <div class="wrap">
+
+  <div class="voice g12" id="voice-seraphim">
+    <div class="said rise c1-4">
+      <img src="assets/seraphim-bit-kharibi.webp" alt="Серафим Бит-Хариби" loading="lazy" decoding="async">
+      <b>Серафим Бит-Хариби</b>
+    </div>
+    <div class="c5-13">
+      <blockquote class="pull rv">Самое страшное — решить, что подниматься уже бессмысленно.</blockquote>
+
+      <div class="body rise" style="margin-top:clamp(34px,5vh,60px)">
+        <p>Неважно, кто ты. Веришь ты или нет. Падал ты один раз или падал столько, что уже перестал считать. В жизни бывает всякое: ошибки, за которые стыдно, поступки, которые уже не вернуть, люди, которых ранил, и моменты, когда сам понимаешь — виноват…</p>
+        <p>Павел был таким человеком: он гнал христиан, причинял им зло и был уверен, что поступает правильно. Но однажды всё изменилось. Нет, не его прошлое, конечно, — прошлое останется уже навсегда вместе с ним. Но изменился он сам.</p>
+        <p>И именно об этом хочется сказать в сериале. Не о человеке без ошибок, а о человеке, который понял в какой-то момент, что идёт не туда, и нашёл в себе силы. Нашёл в себе силы увидеть эту правду, и принять эту правду, и идти по этой правде.</p>
+        <p>Потому что самое страшное в нашей жизни — не упасть. Самое страшное — это решить, что подниматься уже бессмысленно. А если всё-таки можно? А если даже после всего сделанного можно изменить свою жизнь, если прошлое не обязано стать нашим будущим?..</p>
+        <p>Именно об этом история Павла.</p>
+        <p>Я думаю, что он нужен каждому из нас, что каждый из нас может заглянуть глубоко в себя, что каждый может понять: не всё потеряно, что каждый может понять, что он не одинок. Я надеюсь, что, когда сериал выйдет, история Павла коснётся сердец каждого — как верующего, так и атеиста. Поэтому для меня очень важно, чтобы проект реализовался.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="voice g12">
+    <!-- Говорящий идёт первым и в разметке, и в чтении: сначала видно,
          кто говорит, и только потом сами слова. На телефоне колонки
          схлопываются, и порядок сохраняется сам собой. -->
     <div class="said rise c1-4">
@@ -520,6 +550,8 @@
         <p>Этот сериал — не проповедь. Это портрет человека, который прошёл через всё и не потерял голос. И я верю, что сегодня миру нужен именно такой рассказ: о стойкости, о способности меняться, о цене слова и о том, как один упрямый, страстный, ироничный и сомневающийся человек может изменить ход истории.</p>
       </div>
     </div>
+  </div>
+
   </div>
 </section>
 
@@ -543,13 +575,13 @@
   <div class="wide">
     <h2 class="h2 rv c1-6">Первый материал</h2>
     <div class="teaser rise" style="margin-top:clamp(32px,5vh,56px)">
-      <video class="teaser-v" data-vid="assets/video/finale.mp4"
+      <video class="teaser-v" data-vid="assets/video/finale.mp4" data-webm
              data-vid-vert="assets/vertical/finale-9x16.mp4"
              data-poster-vert="assets/vertical/finale-9x16.webp"
              poster="assets/video/finale.webp" muted loop playsinline preload="none"></video>
       <div class="pl">
         <i>&#9654;</i>
-        <b>Тизер в монтаже</b>
+        <b>Тизер на стадии предпродакшен</b>
       </div>
     </div>
   </div>
@@ -564,13 +596,16 @@
     <div class="contacts rise">
       <div><b>Почта</b><a href="mailto:black.cobra.kino@gmail.com">black.cobra.kino@gmail.com</a></div>
       <div><b>Телефон</b><a href="tel:+79254231542">+7 (925) 423-15-42</a></div>
-      <div><b>Telegram</b><a href="https://t.me/BlackCobraPro" target="_blank" rel="noopener">@BlackCobraPro</a></div>
+      <div><b>Telegram</b>
+        <a href="https://t.me/BlackCobraPro" target="_blank" rel="noopener">@BlackCobraPro</a>
+        <a href="https://t.me/CobraProductio" target="_blank" rel="noopener">@CobraProductio</a>
+      </div>
     </div>
 
     <div class="fine">
       <strong style="color:var(--head);letter-spacing:.24em;font-size:11px">BLACK COBRA PRODUCTION</strong><br>
       «Павел из Тарса» · промо-сайт проекта в разработке · <span id="yr"></span><br>
-      Оригинальный сценарий. Изображения на странице — материалы визуальной разработки, а не кадры готового сериала.
+      Оригинальный сценарий. Историческая основа и вдохновение: Иннокентий Херсонский, «Жизнь Святого Апостола Павла». Изображения на странице — материалы визуальной разработки, а не кадры готового сериала.
     </div>
   </div>
 </footer>

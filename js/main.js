@@ -138,21 +138,48 @@ targets.forEach(function(t){ if (t) nio.observe(t); });
 /* ── видео: грузим и играем только то, что на экране ───── */
 /* mp4 (H.264) — везде; webm — запасной для сборок без H.264 */
 var probe = document.createElement('video');
-var EXT = probe.canPlayType('video/mp4; codecs="avc1.42E01E"') ? '.mp4' : '.webm';
+var EXT_MP4 = !!probe.canPlayType('video/mp4; codecs="avc1.42E01E"');
 var PORTRAIT = matchMedia('(max-aspect-ratio: 3/4)').matches;
+
+/* ── блок «Поворот»: на телефоне кадры, на широком экране видео ──
+   Лишнюю половину выкидываем из документа до того, как заработают
+   ленивые загрузчики: иначе телефон качает два видео, которых не
+   увидит, а компьютер — две картинки, которых не покажет.
+   Картинки ждут в data-src, чтобы браузер не начал их тянуть сам. */
+(function(){
+  var stage = document.getElementById('turnStage');
+  if (!stage) return;
+  var frame = document.getElementById('turnFrame');
+  if (PORTRAIT){
+    stage.classList.add('pics');
+    stage.querySelectorAll('video.lay').forEach(function(v){ v.remove(); });
+    frame.querySelectorAll('img.lay').forEach(function(i){
+      i.src = i.dataset.src;
+      i.removeAttribute('data-src');
+    });
+  } else if (frame){
+    frame.remove();
+  }
+})();
 
 /* Если у кадра есть вертикальный вариант и телефон держат стоя —
    берём его. Горизонтальный кадр 2.39:1 на вертикальном экране
-   превращается в полоску высотой в палец. */
+   превращается в полоску высотой в палец.
+   Запасной webm лежит не для всех роликов, поэтому уходим на него
+   только там, где он реально есть (data-webm): иначе браузер без
+   H.264 получал бы 404 вместо картинки. */
+function ext(el){
+  return (!EXT_MP4 && el && el.dataset && 'webm' in el.dataset) ? '.webm' : '.mp4';
+}
 function vsrc(el){
   var base = (PORTRAIT && el.dataset.vidVert) ? el.dataset.vidVert : el.dataset.vid;
-  return base.replace(/\.mp4$/, '') + EXT;
+  return base.replace(/\.mp4$/, '') + ext(el);
 }
 
 var heroVid = document.getElementById('heroVid');
 if (heroVid){
   var base = PORTRAIT ? 'assets/video/hero-loop-9x16' : 'assets/video/hero-loop';
-  heroVid.src = base + EXT;
+  heroVid.src = base + '.mp4';
   heroVid.poster = base + '.webp';
   heroVid.play().catch(function(){});
 }
@@ -229,7 +256,9 @@ if (window.gsap && window.ScrollTrigger && !RM){
                            разметки шестьдесят раз в секунду впустую */
 
   var tl = gsap.timeline({scrollTrigger:{
-    trigger: stage, start:'top top', end:'+=260%', pin:true, scrub:.7, anticipatePin:1,
+    /* на телефоне ход короче: 2.6 экрана большим пальцем — это долго */
+    trigger: stage, start:'top top', end: PORTRAIT ? '+=185%' : '+=260%',
+    pin:true, scrub:.7, anticipatePin:1,
     onUpdate: function(s){
       var warm = s.progress > 0.46;
       setAct(warm ? 'after' : 'before');
@@ -248,14 +277,18 @@ if (window.gsap && window.ScrollTrigger && !RM){
     onLeaveBack: function(){ setAct('before'); struck = false; }
   }});
 
-  tl.fromTo(before, {scale:1.03}, {scale:1.22, duration:.62, ease:'none'}, 0);
+  /* Кадр в рамке 4:5 наезжает мягче: там нет запаса по краям,
+     сильный зум съел бы фигуру. */
+  tl.fromTo(before, {scale: PORTRAIT ? 1.0 : 1.03},
+                    {scale: PORTRAIT ? 1.09 : 1.22, duration:.62, ease:'none'}, 0);
 
   var gr0 = getComputedStyle(grain).opacity;
   tl.fromTo(flash, {scale:0, opacity:0},
                    {scale: MOB ? 36 : 58, opacity:1, duration:.16, ease:'power2.in'}, .28)
     .to(grain, {opacity:0, duration:.12, ease:'none'}, .30)
     .set(after, {opacity:1}, .46)
-    .fromTo(after, {scale:1.20}, {scale:1.02, duration:.34, ease:'none'}, .46)
+    .fromTo(after, {scale: PORTRAIT ? 1.10 : 1.20},
+                   {scale: PORTRAIT ? 1.0  : 1.02, duration:.34, ease:'none'}, .46)
     .to(flash, {opacity:0, duration:.16, ease:'power1.out'}, .58)
     .to(grain, {opacity:gr0, duration:.16, ease:'none'}, .58);
 
